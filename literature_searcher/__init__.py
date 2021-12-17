@@ -1,14 +1,14 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, flash
 
+from literature_searcher import query_processor
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
     )
 
     if test_config is None:
@@ -24,9 +24,15 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return render_template('home.html')
+    @app.route("/")
+    def home():
+        return render_template("home.html")
 
+    @app.route("/query_response", methods=["GET", "POST"])
+    def response():
+        query = request.args["query"]
+        if not query:
+            flash("No query")
+        response = query_processor.process(query)
+        return render_template("response.html", response=response)
     return app

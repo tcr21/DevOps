@@ -1,0 +1,1 @@
+FLASK_APP=literature_searcher

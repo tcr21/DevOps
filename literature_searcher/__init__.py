@@ -28,9 +28,9 @@ def create_app(test_config=None):
     def home():
         return render_template("home.html")
 
-    @app.route("/query_response", methods=["GET", "POST"])
+    @app.route("/search_result", methods=["GET", "POST"])
     def response():
-        query = request.args["query"]
+        query = request.args["search_query"]
         if not query:
             flash("No query")
         response = query_processor.process(query)

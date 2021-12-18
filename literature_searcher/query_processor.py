@@ -11,4 +11,4 @@ database = {"shakespeare":
 
 
 def process(query):
-    return [val for key, val in database.items() if key in query]
+    return [val for key, val in database.items() if key in query.lower()]

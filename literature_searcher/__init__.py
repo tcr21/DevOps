@@ -33,6 +33,6 @@ def create_app(test_config=None):
         query = request.args["search_query"]
         if not query:
             flash("No query")
-        response = query_processor.process(query)
-        return render_template("search_result.html", response=response)
+        search_results = query_processor.process(query)
+        return render_template("search_result.html", search_results=search_results)
     return app

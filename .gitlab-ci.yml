@@ -1,0 +1,25 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script: 
+    - echo "Building..."
+    - python --version
+    - pip install virtualenv
+    - virtualenv venv
+    - venv/bin/activate
+    - pip install -r requirements.txt
+  
+test:
+  stage: test
+  script:
+    - echo "Testing..."
+    - python setup.py test
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying..."

@@ -7,10 +7,6 @@ build:
   stage: build
   script: 
     - echo "Building..."
-    # - alias python='python3'
-    # - python --version
-    - pip install virtualenv
-    - virtualenv venv
     - venv/bin/activate
     - pip install -r requirements.txt
   
@@ -18,7 +14,7 @@ test:
   stage: test
   script:
     - echo "Testing..."
-    - python setup.py test
+    - python -m pytest
 
 deploy:
   stage: deploy

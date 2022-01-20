@@ -5,6 +5,7 @@ stages:
 
 build:
   stage: build
+  image: python:3.8
   script: 
     - echo "Building..."
     - pip install -r requirements.txt

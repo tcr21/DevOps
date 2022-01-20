@@ -6,11 +6,11 @@ stages:
 build:
   stage: build
   image: python:3.8
-  script: 
-    - echo "Building..."
+  script:
+    - echo "Building...."
     - pip --version
     - pip install -r requirements.txt
-  
+
 test:
   stage: test
   image: python:3.8

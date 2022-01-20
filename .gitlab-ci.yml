@@ -13,6 +13,7 @@ build:
   
 test:
   stage: test
+  image: python:3.8
   script:
     - echo "Testing..."
     - pip install pytest
@@ -20,5 +21,6 @@ test:
 
 deploy:
   stage: deploy
+  image: python:3.8
   script:
     - echo "Deploying..."

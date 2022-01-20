@@ -8,8 +8,7 @@ build:
   image: python:3.8
   script: 
     - echo "Building..."
-    - sudo apt install python3.8
-    - python --version
+    - pip --version
     - pip install -r requirements.txt
   
 test:

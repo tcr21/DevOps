@@ -16,7 +16,7 @@ test:
   script:
     - echo "Testing..."
     - pip install pytest
-    - pytest
+    - python -m pytest
 
 deploy:
   stage: deploy

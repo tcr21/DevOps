@@ -7,7 +7,7 @@ build:
   stage: build
   script: 
     - echo "Building..."
-    - venv/bin/activate
+    - . venv/bin/activate
     - pip install -r requirements.txt
   
 test:

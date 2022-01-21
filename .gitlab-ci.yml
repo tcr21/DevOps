@@ -3,10 +3,11 @@ stages:
   - test
   - deploy
 
-image: python:3.8
+
 
 build:
   stage: build
+  image: python:3.8
   script:
     - echo "Building...."
     - pip3 --version
@@ -15,6 +16,7 @@ build:
 
 test:
   stage: test
+  image: python:3.8
   script:
     - echo "Testing..."
     - pip3 list
@@ -23,6 +25,7 @@ test:
 
 deploy:
   stage: deploy
+  image: python:3.8
   script:
     - echo "Deploying..."
     - flask run --port 5000

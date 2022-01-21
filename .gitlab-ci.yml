@@ -3,8 +3,6 @@ stages:
   - test
   - deploy
 
-default:
-  image: python:3.8
 
 build:
   stage: build

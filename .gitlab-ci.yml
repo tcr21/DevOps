@@ -24,4 +24,5 @@ deploy:
   stage: deploy
   script:
     - echo "Deploying..."
+    - python --version
     - flask run

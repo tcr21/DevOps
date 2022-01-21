@@ -3,7 +3,8 @@ stages:
   - test
   - deploy
 
-image: python:3.8
+image: 
+  name: python:3.8
   pull_policy: if-not-present
 
 build:

@@ -7,12 +7,15 @@ build:
   stage: build
   script:
     - echo "Building...."
+    - apt-get update -qy
+    - apt-get install -y python-dev python-pip
+    - python --version
     - shopt -s expand_aliases
     - alias python='/usr/bin/python3'
     - python --version
     # - python -m venv flask_app
-    - export PYTHONPATH=.
-    - export FLASK_APP=web
+    # - export PYTHONPATH=.
+    # - export FLASK_APP=web
     - pip install -r requirements.txt
     - pip3 install Flask gunicorn pytest pytest-cov
     - which flask

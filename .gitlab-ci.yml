@@ -27,4 +27,4 @@ deploy:
   script:
     - echo "Deploying..."
     - . flask_app/bin/activate
-    - flask run --host=146.169.41.142 
+    - flask run --host=146.169.41.142 >> log.txt 2>61 &

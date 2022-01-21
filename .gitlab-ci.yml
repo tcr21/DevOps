@@ -28,5 +28,6 @@ deploy:
   image: python:3.8
   script:
     - echo "Deploying..."
+    - pip3 list
     - export FLASK_APP=literature_searcher
     - flask run

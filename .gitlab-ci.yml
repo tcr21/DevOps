@@ -12,7 +12,7 @@ build:
     - python --version
     - python -m venv flask_app
     - pip install -r requirements.txt
-
+    - which flask
 
 test:
   stage: test

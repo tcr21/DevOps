@@ -7,7 +7,7 @@ build:
   stage: build
   script:
     - echo "Building...."
-    - alias python=python3
+    - alias python='/usr/bin/python3'
     - python --version
     - pip3 install -r requirements.txt
 

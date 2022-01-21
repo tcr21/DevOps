@@ -10,6 +10,7 @@ build:
     - echo "Building...."
     - pip --version
     - pip install -r requirements.txt
+    - pip list
 
 test:
   stage: test

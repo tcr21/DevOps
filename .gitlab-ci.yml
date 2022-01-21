@@ -28,4 +28,5 @@ deploy:
   image: python:3.8
   script:
     - echo "Deploying..."
-    - flask run --port 5000
+    - export FLASK_APP=literature_searcher
+    - flask run

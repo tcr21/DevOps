@@ -3,6 +3,14 @@ stages:
   - test
   - deploy
 
+cache:
+  paths:
+    - flask_app/
+
+default:
+  tags:
+    - shell
+
 build:
   stage: build
   script:

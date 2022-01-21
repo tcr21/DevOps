@@ -4,6 +4,7 @@ default:
 build:
   stage: build
   script:
+    - pip3 list
     - echo "Hello, $GITLAB_USER_LOGIN!"
 
 test:

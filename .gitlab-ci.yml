@@ -22,7 +22,7 @@ test:
   stage: test
   script:
     - echo "Testing..."
-    - source flask_app/bin/activate
+    #- source flask_app/bin/activate
     - python -m pytest
 
 deploy:
@@ -30,6 +30,6 @@ deploy:
   script:
     - echo "Deploying..."
     - python --version
-    - source flask_app/bin/activate
+    #- source flask_app/bin/activate
     - flask run
     - deactivate

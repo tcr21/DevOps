@@ -23,4 +23,7 @@ deploy:
   script:
     - echo "Deploying..."
     - pip3 list
+    - ls -a 
+    - cd ../..
+    - ls -a
     - flask run

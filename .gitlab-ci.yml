@@ -10,8 +10,9 @@ build:
     - shopt -s expand_aliases
     - alias python='/usr/bin/python3'
     - python --version
-    - python -m venv flask_app
+    # - python -m venv flask_app
     - pip install -r requirements.txt
+    - which python
     - which flask
 
 test:

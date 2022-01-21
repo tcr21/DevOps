@@ -7,28 +7,21 @@ build:
   stage: build
   script:
     - echo "Building...."
-    #- shopt -s expand_aliases
-    #- alias python='/usr/bin/python3'
-    #- python --version
     - python3 -m venv flask_app
-    - source flask_app/bin/activate
-    #- export PYTHONPATH=.
-    #- export FLASK_APP=web
-    - pip3 install -r requirements.txt
-    #- pip3 install Flask gunicorn pytest pytest-cov
-    #- which flask
+    - . flask_app/bin/activate
+    - pip install -r requirements.txt
 
 test:
   stage: test
   script:
     - echo "Testing..."
-    #- source flask_app/bin/activate
-    - python3 -m pytest
+    - . flask_app/bin/activate
+    - pytest
 
 deploy:
   stage: deploy
   script:
     - echo "Deploying..."
-    #- source flask_app/bin/activate
+    - . flask_app/bin/activate
     - flask run
     - deactivate

@@ -11,12 +11,15 @@ build:
     - pip3 --version
     - pip3 install -r requirements.txt
     - pip3 list
+    - docker ps
 
 test:
   stage: test
   image: python:3.8
   script:
     - echo "Testing..."
+    - pip3 list
+    - docker ps
     - python3 -m pytest
 
 deploy:

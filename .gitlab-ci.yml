@@ -29,5 +29,7 @@ deploy:
   script:
     - echo "Deploying..."
     - pip3 list
-    - export FLASK_APP=literature_searcher
+    - echo "Checking where flask is installed:"
+    - pip install Flask
+    - echo $PATH
     - flask run

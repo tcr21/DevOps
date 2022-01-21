@@ -9,24 +9,17 @@ build:
     - echo "Building...."
     - python --version
     - pip3 install -r requirements.txt
-    - pip3 list
 
 test:
   stage: test
   script:
     - echo "Testing..."
-    - pip3 list
     - python3 -m pytest
 
 deploy:
   stage: deploy
   script:
     - echo "Deploying..."
-    - echo $FLASK_APP
-    - export FLASK_APP=literature_searcher
-    - echo $FLASK_APP
-    - pip3 list
-    - ls -a 
-    - cd ../..
-    - ls -a
+    - python --version
+    - python3 --version
     - flask run

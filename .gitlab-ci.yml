@@ -7,9 +7,9 @@ build:
   stage: build
   script:
     - echo "Building...."
-    - shopt -s expand_aliases
-    - alias python='/usr/bin/python3'
-    - python --version
+    #- shopt -s expand_aliases
+    #- alias python='/usr/bin/python3'
+    #- python --version
     - python -m venv flask_app
     - source flask_app/bin/activate
     #- export PYTHONPATH=.
@@ -29,7 +29,6 @@ deploy:
   stage: deploy
   script:
     - echo "Deploying..."
-    - python --version
     #- source flask_app/bin/activate
     - flask run
     - deactivate

@@ -11,8 +11,10 @@ build:
     - alias python='/usr/bin/python3'
     - python --version
     # - python -m venv flask_app
+    - export PYTHONPATH=.
+    - export FLASK_APP=web
     - pip install -r requirements.txt
-    - which python
+    - pip3 install Flask gunicorn pytest pytest-cov
     - which flask
 
 test:

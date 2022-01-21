@@ -27,5 +27,4 @@ deploy:
   script:
     - echo "Deploying..."
     - . flask_app/bin/activate
-    - flask run --host=146.169.41.142
-    - deactivate
+    - flask run --host=146.169.41.142 

@@ -22,6 +22,9 @@ deploy:
   stage: deploy
   script:
     - echo "Deploying..."
+    - echo $FLASK_APP
+    - export FLASK_APP=literature_searcher
+    - echo $FLASK_APP
     - pip3 list
     - ls -a 
     - cd ../..

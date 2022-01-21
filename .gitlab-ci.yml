@@ -24,5 +24,7 @@ deploy:
   stage: deploy
   script:
     - echo "Deploying..."
+    - shopt -s expand_aliases
+    - alias python='/usr/bin/python3'
     - python --version
     - flask run

@@ -4,7 +4,7 @@ stages:
   - deploy
 
 image: python:3.8
-pull_policy: if-not-present
+  pull_policy: if-not-present
 
 build:
   stage: build

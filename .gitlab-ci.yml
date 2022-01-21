@@ -1,18 +1,26 @@
-default:
-  image: python:3.8
+stages:
+  - build
+  - test
+  - deploy
 
 build:
   stage: build
   script:
+    - echo "Building...."
+    - python --version
+    - pip3 install -r requirements.txt
     - pip3 list
-    - echo "Hello, $GITLAB_USER_LOGIN!"
 
 test:
   stage: test
   script:
-    - echo "This job tests something"
+    - echo "Testing..."
+    - pip3 list
+    - python3 -m pytest
 
 deploy:
   stage: deploy
   script:
-    - echo "This job deploys something from the $CI_COMMIT_BRANCH branch."
+    - echo "Deploying..."
+    - pip3 list
+    - flask run

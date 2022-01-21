@@ -10,7 +10,7 @@ build:
     #- shopt -s expand_aliases
     #- alias python='/usr/bin/python3'
     #- python --version
-    - python -m venv flask_app
+    - python3 -m venv flask_app
     - source flask_app/bin/activate
     #- export PYTHONPATH=.
     #- export FLASK_APP=web
@@ -23,7 +23,7 @@ test:
   script:
     - echo "Testing..."
     #- source flask_app/bin/activate
-    - python -m pytest
+    - python3 -m pytest
 
 deploy:
   stage: deploy

@@ -9,7 +9,9 @@ build:
     - echo "Building...."
     - alias python='/usr/bin/python3'
     - python --version
+    - python3 -m venv flask_app
     - pip3 install -r requirements.txt
+
 
 test:
   stage: test
@@ -21,6 +23,4 @@ deploy:
   stage: deploy
   script:
     - echo "Deploying..."
-    - python --version
-    - python3 --version
     - flask run

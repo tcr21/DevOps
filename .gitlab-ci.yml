@@ -3,14 +3,13 @@ stages:
   - test
   - deploy
 
-
 build:
   stage: build
   script:
     - echo "Building...."
-    - ls -a
     - python --version
     - pip3 list
+    - flask --help
 
 test:
   stage: test

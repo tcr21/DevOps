@@ -5,15 +5,15 @@ Search some literature:
 <form action="/search_result">
   <label for="search_query">Query:</label>
   <input type="text" id="search_query" name="search_query">
-</form>
-<br><br>
-<form>
+  <br><br>
   View as HTML or markdown:
   <br>
   <label for="HTML">HTML</label>
-  <input type="radio" id="HTML" name="search_query" value="HTML">
+  <input type="radio" id="HTML" name="search_query" value="HTML" checked>
   <br>
   <label for="markdown">markdown</label>
   <input type="radio" id="markdown" name="search_query" value="markdown">
+  <br>
+  <input type="submit">
 </form>
 {% endblock %}

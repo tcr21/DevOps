@@ -4,7 +4,8 @@ variables:
 stages:
   - build
   - test
-  - deploy
+  - deploy_VM
+  - deploy_heroku
 
 cache:
   paths:
@@ -17,7 +18,6 @@ build:
     - python3 -m venv flask_app
     - . flask_app/bin/activate
     - pip install -r requirements.txt
-    - dpl --provider=heroku --app=tcr21-simplewebapp --api-key=$HEROKU_API_KEY
 
 test:
   stage: test
@@ -26,9 +26,16 @@ test:
     - . flask_app/bin/activate
     - pytest
 
-deploy:
-  stage: deploy
+deploy_VM:
+  stage: deploy_VM
   script:
-    - echo "Deploying..."
+    - echo "Deploying to VM..."
     - . flask_app/bin/activate
     - flask run --host=146.169.41.142 >> log.txt 2>61 &
+
+deploy_heroku:
+  stage: deploy_heroku
+  script:
+    - echo "Deploying to Heroku..."
+    - dpl --provider=heroku --app=tcr21-simplewebapp --api-key=$HEROKU_API_KEY
+

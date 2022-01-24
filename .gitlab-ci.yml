@@ -1,3 +1,6 @@
+variables:
+  HEROKU_API_KEY: $heroku_api_key
+
 stages:
   - build
   - test
@@ -14,7 +17,7 @@ build:
     - python3 -m venv flask_app
     - . flask_app/bin/activate
     - pip install -r requirements.txt
-    - dpl --provider=heroku --app=tcr21-simplewebapp --api-key=27c9000c-d346-4eae-b939-14ed2383f3fa
+    - dpl --provider=heroku --app=tcr21-simplewebapp --api-key=$HEROKU_API_KEY
 
 test:
   stage: test

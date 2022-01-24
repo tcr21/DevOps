@@ -1,14 +1,17 @@
 {% extends "basic.html" %}
 {% block title %}Response{% endblock %}
 {% block body %}
-Response to query:<br>
+<a href="/">Back to homepage</a>
+<div style="margin-top: 20px;">
+    Response to query:
+</div>
 <ul>
 {% for result in search_results %}
 <li> {{ result }}
 {% endfor %}
 </ul>
 <p>
-    <a href="{{ url_for('search_result.download', filetype = 'html') }}" style = "font: bold 11px Arial;
+    <a href="{{ url_for('search_result.download', filetype = file_type) }}" style = "font: bold 11px Arial;
                 text-decoration: none;
                 background-color: #EEEEEE;
                 color: #333333;

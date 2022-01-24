@@ -1,5 +1,7 @@
 from flask import Blueprint, request, render_template, flash, send_file
 from literature_searcher import query_processor
+import pypandoc
+from pdflatex import PDFLaTeX
 import sys
 import subprocess
 
@@ -13,10 +15,10 @@ def response():
 
     if file_type == 'pdf':
         file_name = 'literature_searcher/results/result.md'
-        subprocess.run(
-            "pandoc -s -o literature_searcher/results/result.pdf literature_searcher/results/result.md")
+        args = ['pandoc', 'literature_searcher/results/result.md', '-o', 'literature_searcher/results/result.pdf', "--pdf-engine=pdflatex"]
+        subprocess.run(args)
     else:
-        file_name = 'literature_searcher/results/result.'+file_type
+        file_name = 'literature_searcher/results/result.' + file_type
 
     if not query:
         flash("No query")

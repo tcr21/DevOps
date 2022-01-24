@@ -9,11 +9,15 @@ Search some literature:
   View as HTML or markdown:
   <br>
   <label for="HTML">HTML</label>
-  <input type="radio" id="HTML" name="search_query" value="HTML" checked>
+  <input type="radio" id="HTML" name="file_type" value="html" checked>
   <br>
   <label for="markdown">markdown</label>
-  <input type="radio" id="markdown" name="search_query" value="markdown">
+  <input type="radio" id="markdown" name="file_type" value="md">
   <br>
-  <input type="submit">
+  <div style="display: flex; margin-top: 5px;">
+    <input type="submit">
+    <label for="download">download</label>
+    <input type="checkbox" id="download" name="download" value="true">
+  </div>
 </form>
 {% endblock %}

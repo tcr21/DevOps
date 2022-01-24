@@ -1,7 +1,5 @@
 from flask import Blueprint, request, render_template, flash, send_file
 from literature_searcher import query_processor
-import pypandoc
-from pdflatex import PDFLaTeX
 import sys
 import subprocess
 

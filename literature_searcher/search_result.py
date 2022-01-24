@@ -4,8 +4,6 @@ import sys
 import os
 import subprocess
 
-import literature_searcher
-
 bp = Blueprint("search_result", __name__)
 
 
@@ -35,6 +33,7 @@ def response():
 @bp.route("/download/<filetype>")
 def download(filetype):
     file_name = 'results/result.' + filetype
+
     @after_this_request
     def remove_file(response):
         try:

@@ -1,7 +1,10 @@
-from flask import Blueprint, request, render_template, flash, send_file
+from flask import Blueprint, request, render_template, flash, send_file, after_this_request
 from literature_searcher import query_processor
 import sys
+import os
 import subprocess
+
+import literature_searcher
 
 bp = Blueprint("search_result", __name__)
 
@@ -32,4 +35,14 @@ def response():
 @bp.route("/download/<filetype>")
 def download(filetype):
     file_name = 'results/result.' + filetype
+    @after_this_request
+    def remove_file(response):
+        try:
+            os.remove("literature_searcher/" + file_name)
+            if filetype == "pdf":
+                os.remove("literature_searcher/results/result.md")
+        except Exception as error:
+            print("Error removing or closing downloaded file handle", error)
+        return response
+
     return send_file(file_name, as_attachment=True)

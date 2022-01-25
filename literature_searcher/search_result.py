@@ -16,7 +16,7 @@ def response():
         flash("No query")
     search_results = query_processor.process(query)
 
-    file_path = 'literature_searcher/results/result.'
+    file_path = 'literature_searcher/result.'
     file_extension = 'md' if file_type == 'pdf' else file_type
     file_name = file_path + file_extension
 
@@ -25,21 +25,23 @@ def response():
     f.close()
 
     if file_type == 'pdf':
-        args = ['pandoc', 'literature_searcher/results/result.md', '-o', 'literature_searcher/results/result.pdf', "--pdf-engine=pdflatex"]
+        args = ['pandoc', 'literature_searcher/result.md', '-o',
+                'literature_searcher/result.pdf', "--pdf-engine=pdflatex"]
         subprocess.run(args)
-  
+
     return render_template("search_result.html", search_results=search_results, file_type=file_type)
+
 
 @bp.route("/download/<filetype>")
 def download(filetype):
-    file_name = 'results/result.' + filetype
+    file_name = 'result.' + filetype
 
     @after_this_request
     def remove_file(response):
         try:
             os.remove("literature_searcher/" + file_name)
             if filetype == "pdf":
-                os.remove("literature_searcher/results/result.md")
+                os.remove("literature_searcher/result.md")
         except Exception as error:
             print("Error removing or closing downloaded file handle", error)
         return response

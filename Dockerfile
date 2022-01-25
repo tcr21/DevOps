@@ -5,6 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.8 \
     python3-pip \
+    python3.8-venv \
     pandoc \
     texlive-full
 

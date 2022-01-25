@@ -8,4 +8,4 @@ RUN python3 -m venv venv
 RUN . venv/bin/activate && pip install -r requirements.txt
 COPY . .
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD . venv/bin/activate && [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

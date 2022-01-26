@@ -1,6 +1,10 @@
 variables:
   HEROKU_API_KEY: $heroku_api_key
 
+before_script:
+  - python3 -m venv flask_app
+  - . flask_app/bin/activate
+
 stages:
   - build
   - test
@@ -15,22 +19,18 @@ build:
   stage: build
   script:
     - echo "Building...."
-    - python3 -m venv flask_app
-    - . flask_app/bin/activate
     - pip install -r requirements.txt
 
 test:
   stage: test
   script:
     - echo "Testing..."
-    - . flask_app/bin/activate
     - pytest
 
 deploy_VM:
   stage: deploy_VM
   script:
     - echo "Deploying to VM..."
-    - . flask_app/bin/activate
     - flask run --host=146.169.41.142 >> log.txt 2>61 &
 
 deploy_heroku:

@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM python:3.9-slim-bullseye
+FROM gitlab.informatik.uni-bremen.de:5005/hoeffner/pandoc-python-docker:latest
 
 # ENV VIRTUAL_ENV=venv
 # RUN python3 -m venv $VIRTUAL_ENV
@@ -12,7 +12,7 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-FROM pandoc/core:latest
+# FROM pandoc/core:latest
 
 CMD ["python3", "-m" , "flask", "run", "--host=0.0.0.0"]
 

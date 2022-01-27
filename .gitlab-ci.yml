@@ -53,4 +53,6 @@ deploy_heroku:
     - apt-get install -y ruby-dev
     - gem install dpl
     - dpl --provider=heroku --app=tcr21-simplewebapp --api-key=$HEROKU_API_KEY
+  only:
+    - main
 

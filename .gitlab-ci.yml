@@ -16,7 +16,7 @@ cache:
     - flask_app/
 
 build:
-  image: docker:latest
+  image: pandoc-python-docker:latest
   services:
     - docker:dind
   stage: build
@@ -25,7 +25,7 @@ build:
     - pip install -r requirements.txt
 
 test:
-  image: docker:latest
+  image: pandoc-python-docker:latest
   services:
     - docker:dind
   stage: test

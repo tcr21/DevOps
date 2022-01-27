@@ -34,12 +34,18 @@ test:
     - pytest
 
 deploy_VM:
+  image: gitlab.informatik.uni-bremen.de:5005/hoeffner/pandoc-python-docker:latest
+  services:
+    - docker:dind
   stage: deploy_VM
   script:
     - echo "Deploying to VM..."
     - flask run --host=146.169.41.142 >> log.txt 2>61 &
 
 deploy_heroku:
+  image: gitlab.informatik.uni-bremen.de:5005/hoeffner/pandoc-python-docker:latest
+  services:
+    - docker:dind
   stage: deploy_heroku
   script:
     - echo "Deploying to Heroku..."

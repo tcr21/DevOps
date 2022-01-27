@@ -1,3 +1,5 @@
+image: docker:latest
+
 variables:
   HEROKU_API_KEY: $heroku_api_key
 

@@ -8,6 +8,8 @@ before_script:
 stages:
   - build
   - test
+  - deploy_VM
+  - deploy_heroku
 
 cache:
   paths:

@@ -8,20 +8,24 @@ before_script:
 stages:
   - build
   - test
-  - deploy_VM
-  - deploy_heroku
 
 cache:
   paths:
     - flask_app/
 
 build:
+  image: docker:latest
+  services:
+    - docker:dind
   stage: build
   script:
     - echo "Building...."
     - pip install -r requirements.txt
 
 test:
+  image: docker:latest
+  services:
+    - docker:dind
   stage: test
   script:
     - echo "Testing..."

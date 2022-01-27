@@ -16,7 +16,7 @@ cache:
     - flask_app/
 
 build:
-  image: pandoc-python-docker:latest
+  image: gitlab.informatik.uni-bremen.de:5005/hoeffner/pandoc-python-docker:latest
   services:
     - docker:dind
   stage: build
@@ -25,7 +25,7 @@ build:
     - pip install -r requirements.txt
 
 test:
-  image: pandoc-python-docker:latest
+  image: gitlab.informatik.uni-bremen.de:5005/hoeffner/pandoc-python-docker:latest
   services:
     - docker:dind
   stage: test

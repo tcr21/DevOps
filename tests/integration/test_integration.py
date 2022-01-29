@@ -24,7 +24,7 @@ class TestWebApp(unittest.TestCase):
 
     def test_home_page_redirect(self):
         # Sends a GET request to top-level URL of application
-        r = requests.get('http://127.0.0.1:5000/')
+        r = requests.get('http://localhost:5000/')
         assert(r.status_code == 200)
 
         # Test for different fields in html
@@ -34,4 +34,3 @@ class TestWebApp(unittest.TestCase):
         assert 'value="html"' in text
         assert 'value="md"' in text
         assert 'value="pdf"' in text
-        print(text)

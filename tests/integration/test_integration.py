@@ -26,4 +26,11 @@ class TestWebApp(unittest.TestCase):
         # Sends a GET request to top-level URL of application
         r = requests.get('http://127.0.0.1:5000/')
         assert(r.status_code == 200)
+
+        # Test for different fields in html
+        text = r.text
+        assert 'name="search_query"' in text
+        assert 'value="html"' in text
+        assert 'value="md"' in text
+        assert 'value="pdf"' in text
         

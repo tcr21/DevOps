@@ -30,7 +30,8 @@ class TestWebApp(unittest.TestCase):
         # Test for different fields in html
         text = r.text
         assert 'name="search_query"' in text
+        assert 'name="file_type"' in text
         assert 'value="html"' in text
         assert 'value="md"' in text
         assert 'value="pdf"' in text
-        
+        print(text)

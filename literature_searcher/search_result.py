@@ -25,6 +25,10 @@ def response():
     f = open(file_name, 'w')
     for result in search_results:
         f.write(result)
+        if file_type=="html":
+            f.write("<br>")
+        else:
+            f.write("\n")
     f.close()
 
     if file_type == 'pdf':

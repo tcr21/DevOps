@@ -21,7 +21,8 @@ def response():
     file_name = file_path + file_extension
 
     f = open(file_name, 'w')
-    f.write(search_results[0])
+    for result in search_results:
+        f.write(result)
     f.close()
 
     if file_type == 'pdf':

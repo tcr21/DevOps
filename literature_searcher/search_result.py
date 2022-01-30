@@ -15,6 +15,8 @@ def response():
     if not query:
         flash("No query")
     search_results = query_processor.process(query)
+    if not search_results:
+        return render_template("no_match.html")
 
     file_path = 'literature_searcher/result.'
     file_extension = 'md' if file_type == 'pdf' else file_type

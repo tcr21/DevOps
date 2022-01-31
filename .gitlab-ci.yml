@@ -28,7 +28,7 @@ deploy_VM:
     - python3 -m venv flask_app
     - . flask_app/bin/activate
     - pip install -r requirements.txt
-    - flask run --host=146.169.41.142 >> log.txt 2>61 &
+    - flask run --host=146.169.41.142 >> log.txt 2 > &1 &
 
 deploy_heroku:
   image: ruby

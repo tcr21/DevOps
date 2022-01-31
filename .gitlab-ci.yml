@@ -6,8 +6,7 @@ before_script:
   - . flask_app/bin/activate
 
 stages:
-  - build
-  - test
+  - build_test
   - deploy_VM
   - deploy_heroku
 
@@ -15,44 +14,30 @@ cache:
   paths:
     - flask_app/
 
-build:
-  #image: gitlab.informatik.uni-bremen.de:5005/hoeffner/pandoc-python-docker:latest
-  #services:
-    #- docker:dind
-  stage: build
+build_test:
+  image: python
+  stage: build_test
   script:
     - echo "Building...."
     - pip install -r requirements.txt
-
-test:
-  #image: gitlab.informatik.uni-bremen.de:5005/hoeffner/pandoc-python-docker:latest
-  #services:
-    #- docker:dind
-  stage: test
-  script:
     - echo "Testing..."
     - pytest
 
 deploy_VM:
-  #image: gitlab.informatik.uni-bremen.de:5005/hoeffner/pandoc-python-docker:latest
-  #services:
-    #- docker:dind
+  tags: 
+    - VM_deployment
   stage: deploy_VM
   script:
     - echo "Deploying to VM..."
+    - pip install -r requirements.txt
     - flask run --host=146.169.41.142 >> log.txt 2>61 &
 
 deploy_heroku:
-  #image: gitlab.informatik.uni-bremen.de:5005/hoeffner/pandoc-python-docker:latest
-  #services:
-    #- docker:dind
+  image: ruby
   stage: deploy_heroku
   script:
     - echo "Deploying to Heroku..."
-    #- apt-get update -yq
-    #- apt-get install -y ruby-dev
-    #- gem install dpl
+    - gem install dpl
     - dpl --provider=heroku --app=tcr21-simplewebapp --api-key=$HEROKU_API_KEY
-  #only:
-    #- main
+
 

@@ -31,16 +31,7 @@ class TestWebApp(unittest.TestCase):
         # Test for different fields in html
         html = response.get_data(as_text=True)
         assert 'name="search_query"' in html
-        assert 'name="file_type"' in html
-        assert 'value="html"' in html
-        assert 'value="md"' in html
-        assert 'value="pdf"' in html
-
-    def test_search_result_redirect(self):        
-        post_response = self.client.post('/search_result', query_string={
-            'search_query': 'shakespeare',
-            'file_type': 'html',
-        }, follow_redirects=True)
-        
-        assert post_response.status_code == 200
-        assert post_response.request.path == '/search_result' # redirected to search_result
+        # assert 'name="file_type"' in html
+        # assert 'value="html"' in html
+        # assert 'value="md"' in html
+        # assert 'value="pdf"' in html

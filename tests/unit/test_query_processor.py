@@ -16,3 +16,7 @@ def test_knows_about_huxley():
 
 def test_not_case_sensitive():
     assert any("playwright" in result for result in process("shakespeare"))
+
+def test_multiple_names():
+    assert any("playwright" in result for result in process("Shakespeare, Homer"))
+    assert any("Greek author" in result for result in process("Shakespeare, Homer"))

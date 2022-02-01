@@ -48,7 +48,7 @@ class TestWebApp(unittest.TestCase):
         assert 'value=".md"' in html
         assert 'value=".pdf"' in html
         assert 'type="submit"' in html 
-        assert 'a href="/"' in html
+        assert 'href="/"' in html
 
     def test_invalid_query_search_result_redirect(self):
         # Test post response 
@@ -61,4 +61,4 @@ class TestWebApp(unittest.TestCase):
         # Test for different fields in html
         html = response.get_data(as_text=True)
         assert "No match to query!" in html
-        assert 'a href="/"' in html
+        assert 'href="/"' in html

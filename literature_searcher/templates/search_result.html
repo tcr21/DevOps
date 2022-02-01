@@ -11,11 +11,25 @@
 {% endfor %}
 </ul>
 <div style = 'flex: 0px;'>
+  Download as html, markdown, or pdf
+  <br>
+  <form action="{{ url_for('search_result.download', query=query) }}" >
+      <!-- onsubmit="button.disabled=true; return true;"> -->
 
-    <form action="{{ url_for('search_result.download', filetype=file_type) }}" 
-        onsubmit="button.disabled=true; return true;">
-    <input type="submit" name="button" style="margin:10px" value="Download"></form>
-                
+    <label for="html">HTML</label>
+    <input type="radio" id="html" name="file_type" value=".html" checked>
+    <br>
+    <label for="markdown">Markdown</label>
+    <input type="radio" id="markdown" name="file_type" value=".md">
+    <br>
+    <label for="pdf">PDF</label>
+    <input type="radio" id="pdf" name="file_type" value=".pdf">
+    <br>
+    <input type="submit" name="button" style="margin:10px" value="Download">
+  </form>
+    <br>
+
+    <br><br><br><br><br><br><br><br><br>
     <a href="/" style = "font: bold 11px Arial;
                 text-decoration: none;
                 background-color: #EEEEEE;
@@ -26,4 +40,5 @@
                 border-bottom: 1px solid #333333;
                 border-left: 1px solid #CCCCCC;">Back to homepage</a>
 </div>
+
 {% endblock %}

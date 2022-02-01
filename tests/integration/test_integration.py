@@ -31,7 +31,34 @@ class TestWebApp(unittest.TestCase):
         # Test for different fields in html
         html = response.get_data(as_text=True)
         assert 'name="search_query"' in html
-        # assert 'name="file_type"' in html
-        # assert 'value="html"' in html
-        # assert 'value="md"' in html
-        # assert 'value="pdf"' in html
+        assert 'type="submit"' in html
+
+    def test_valid_query_search_result_redirect(self):
+        # Test post response 
+        response = self.client.get('/search_result', query_string={
+            'search_query': 'shakespeare'
+        })
+        assert response.status_code == 200
+        assert response.request.path == '/search_result'
+
+        # Test for different fields in html
+        html = response.get_data(as_text=True)
+        assert 'form action="/download/shakespeare"' in html
+        assert 'value=".html"' in html
+        assert 'value=".md"' in html
+        assert 'value=".pdf"' in html
+        assert 'type="submit"' in html 
+        assert 'a href="/"' in html
+
+    def test_invalid_query_search_result_redirect(self):
+        # Test post response 
+        response = self.client.get('/search_result', query_string={
+            'search_query': ''
+        })
+        assert response.status_code == 200
+        assert response.request.path == '/search_result'
+
+        # Test for different fields in html
+        html = response.get_data(as_text=True)
+        assert "No match to query!" in html
+        assert 'a href="/"' in html

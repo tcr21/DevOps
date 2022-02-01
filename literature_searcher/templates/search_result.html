@@ -1,44 +1,28 @@
-{% extends "basic.html" %}
-{% block title %}Response{% endblock %}
-{% block body %}
-<div style="margin-top: 20px;
-            font-size: 20pt;">
-    Response to query:
+{% extends "basic.html" %} {% block title %}Response{% endblock %} {% block body
+%}
+<div class="container">
+  <div class="wrapper">
+    <h1>Query result</h1>
+    <ul>
+      {% for result in search_results %}
+      <li class="list-item">{{ result }} {% endfor %}</li>
+    </ul>
+    <h3>Download as html, markdown, or pdf</h3>
+    <form action="{{ url_for('search_result.download', query=query) }}">
+      <label for="html">HTML</label>
+      <input type="radio" id="html" name="file_type" value=".html" checked />
+      <br />
+      <label for="markdown">Markdown</label>
+      <input type="radio" id="markdown" name="file_type" value=".md" />
+      <br />
+      <label for="pdf">PDF</label>
+      <input type="radio" id="pdf" name="file_type" value=".pdf" />
+      <div style="margin-top: 20px; display: flex; flex-direction: column;">
+        <input class="btn" type="submit" name="button" value="Download" />
+        <br>
+        <a href="/">Back to homepage</a>
+      </div>
+    </form>
+  </div>
 </div>
-<ul>
-{% for result in search_results %}
-<li> {{ result }}
-{% endfor %}
-</ul>
-<div style = 'flex: 0px;'>
-  Download as html, markdown, or pdf
-  <br>
-  <form action="{{ url_for('search_result.download', query=query) }}" >
-      <!-- onsubmit="button.disabled=true; return true;"> -->
-
-    <label for="html">HTML</label>
-    <input type="radio" id="html" name="file_type" value=".html" checked>
-    <br>
-    <label for="markdown">Markdown</label>
-    <input type="radio" id="markdown" name="file_type" value=".md">
-    <br>
-    <label for="pdf">PDF</label>
-    <input type="radio" id="pdf" name="file_type" value=".pdf">
-    <br>
-    <input type="submit" name="button" style="margin:10px" value="Download">
-  </form>
-    <br>
-
-    <br><br><br><br><br><br><br><br><br>
-    <a href="/" style = "font: bold 11px Arial;
-                text-decoration: none;
-                background-color: #EEEEEE;
-                color: #333333;
-                padding: 2px 6px 2px 6px;
-                border-top: 1px solid #CCCCCC;
-                border-right: 1px solid #333333;
-                border-bottom: 1px solid #333333;
-                border-left: 1px solid #CCCCCC;">Back to homepage</a>
-</div>
-
 {% endblock %}

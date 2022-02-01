@@ -27,7 +27,7 @@ class TestWebApp(unittest.TestCase):
         # Test for different fields in html
         html = r.get_data(as_text=True)
         assert 'name="search_query"' in html
-        assert 'name="file_type"' in html
-        assert 'value="html"' in html
-        assert 'value="md"' in html
-        assert 'value="pdf"' in html
+        # assert 'name="file_type"' in html
+        # assert 'value="html"' in html
+        # assert 'value="md"' in html
+        # assert 'value="pdf"' in html

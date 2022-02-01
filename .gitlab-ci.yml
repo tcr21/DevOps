@@ -1,6 +1,12 @@
 variables:
   HEROKU_API_KEY: $heroku_api_key
 
+.before_script_template:
+  before_script:
+    - python3 -m venv flask_app 
+    - . flask_app/bin/activate
+    - pip install -r requirements.txt
+
 stages:
   - build_test
   - deploy_VM
@@ -20,31 +26,24 @@ build_test:
     - pytest
 
 deploy_VM:
+  extends: .before_script_template
   tags: 
     - VM_deployment
   stage: deploy_VM
   script:
     - echo "Deploying to VM..."
-    - python3 -m venv flask_app
-    - . flask_app/bin/activate
-    - pip install -r requirements.txt
     - flask run --host=146.169.41.142 >>log.txt 2>&1 &
+  artifacts:
+    paths: ['log.txt']
+    expire_in: 1 week
 
 deploy_heroku:
-  #comment out tag if want to use shared runner for this stage
+  extends: .before_script_template
   tags: 
     - Heroku_deployment
-  #uncomment if want to use shared runner for this stage
-  #image: ruby 
   stage: deploy_heroku
   script:
     - echo "Deploying to Heroku..."
-    #comment out if want to use shared runner for this stage
-    - python3 -m venv flask_app 
-    #comment out if want to use shared runner for this stage
-    - . flask_app/bin/activate 
-    #uncomment if want to use shared runner for this stage
-    #- gem install dpl #for shared runner use only 
     - dpl --provider=heroku --app=tcr21-simplewebapp --api-key=$HEROKU_API_KEY
 
 

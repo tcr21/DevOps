@@ -1,6 +1,6 @@
 database = {"shakespeare":
             "William Shakespeare (26 April 1564 - 23 April 1616) was an\n"
-            "English poet, and actor, widely regarded as the\n"
+            "English poet, playwright, and actor, widely regarded as the\n"
             "greatest writer in the English language and the world's\n"
             "pre-eminent dramatist.",
             "asimov":
